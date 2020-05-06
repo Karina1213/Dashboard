@@ -1,7 +1,7 @@
 import {
     authenticatedAction,
     authenticationErrorAction,
-    isLoadingAction, logoutAction,
+    isLoadingAction,
 } from '../authActionsCreators';
 import {UserService} from "../../services/userService";
 import '../../services/axiosConfig'
@@ -13,7 +13,7 @@ export function logInAction(email, password) {
 
         UserService.login(email, password)
             .then((response) => {
-                dispatch(logoutAction(true));
+
                 let currentUserId = (response.data._id);
                 localStorage.setItem('currentId', currentUserId);
 

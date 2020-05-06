@@ -12,7 +12,7 @@ export function getCurrentUserAction() {
                 .then((response) => {
                     let currentUserId = (response.data._id);
                     localStorage.setItem('currentUserId', currentUserId);
-
+                    console.log('CurrentUserId',response, currentUserId)
                     dispatch(isLoadingAction(false));
                     dispatch(authenticatedAction(true));
                 })

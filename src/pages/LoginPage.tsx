@@ -7,6 +7,7 @@ import {EmailInput} from '../components/auth/EmailInput';
 import {logInAction} from '../redux/actions/auth/loginActions';
 import {PasswordInput} from '../components/auth/PasswordInput';
 import {getCurrentUserAction} from '../redux/actions/auth/getCurrentUserAction';
+import {logoutAction} from '../redux/actions/authActionsCreators';
 
 interface IState {
     email?: string,
@@ -41,11 +42,15 @@ class LogInPage extends Component <IProps, IState> {
         })
     }
 
+    componentDidMount(): void {
+        this.props.getCurrentUserAction();
+    }
+
     handleSubmit(event: any) {
         const {email, password} = this.state;
         event.preventDefault();
         this.props.logInAction(email, password);
-        this.props.getCurrentUserAction();
+         this.props.getCurrentUserAction();
     };
 
     render() {
@@ -99,7 +104,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getCurrentUserAction: () =>  dispatch(getCurrentUserAction()),
+        getCurrentUserAction: () => dispatch(getCurrentUserAction()),
         logInAction: (email: string, password: string) => dispatch(logInAction(email, password))
     };
 };

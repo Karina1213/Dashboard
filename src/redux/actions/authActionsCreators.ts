@@ -1,4 +1,4 @@
-import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING, GET_CURRENT_USER_ID} from '../reducers/authReducers'
+import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING} from '../reducers/authReducers'
 
 export function logoutAction(bool) {
     localStorage.removeItem('token');
@@ -28,9 +28,4 @@ export function isLoadingAction(bool) {
         isLoading: bool
     };
 }
-export function getCurrentUserIdAction(currentUserId) {
-    return {
-        type: GET_CURRENT_USER_ID,
-        payload: currentUserId
-    };
-}
+
